@@ -1,3 +1,86 @@
+<!-- Подключение Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+<script>
+// Конфигурация Firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyA34LZhC9sCYVrsOeyizC-DwOwgOyv9-4s",
+    authDomain: "mdwal-36193.firebaseapp.com",
+    projectId: "mdwal-36193",
+    storageBucket: "mdwal-36193.appspot.com",
+    messagingSenderId: "13283522525",
+    appId: "1:13283522525:web:1fd2fd526c53c1f3432834"
+};
+
+// Инициализация Firebase
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+// Проверка авторизации
+auth.onAuthStateChanged((user) => {
+    if (!user) {
+        // Если не авторизован, кидаем на страницу входа
+        window.location.href = 'index.html';
+    } else {
+        // Загружаем данные пользователя
+        loadUserData(user.uid);
+    }
+});
+
+async function loadUserData(uid) {
+    try {
+        const userDoc = await db.collection('users').doc(uid).get();
+        const userData = userDoc.data();
+        
+        // Обновляем данные текущего пользователя
+        currentUser.id = userData.customId || uid.slice(0, 8).toUpperCase();
+        currentUser.username = userData.username;
+        currentUser.isAdmin = userData.isAdmin || false;
+        currentUser.balances = userData.balances || currentUser.balances;
+        
+        updateUI();
+        checkAdmin();
+    } catch (error) {
+        console.error('Ошибка загрузки данных:', error);
+    }
+}
+
+// Функция сохранения баланса в Firebase
+async function saveBalancesToFirebase() {
+    const user = auth.currentUser;
+    if (!user) return;
+    
+    try {
+        await db.collection('users').doc(user.uid).update({
+            balances: currentUser.balances
+        });
+    } catch (error) {
+        console.error('Ошибка сохранения:', error);
+    }
+}
+
+// Переопределяем функции, которые меняют баланс
+const originalCompleteTopUp = completeTopUp;
+completeTopUp = function() {
+    originalCompleteTopUp();
+    saveBalancesToFirebase();
+}
+
+const originalSendMoney = sendMoney;
+sendMoney = function() {
+    originalSendMoney();
+    saveBalancesToFirebase();
+}
+
+const originalGameOver = gameOver;
+gameOver = function() {
+    originalGameOver();
+    saveBalancesToFirebase();
+}
+</script>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
