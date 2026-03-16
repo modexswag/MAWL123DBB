@@ -96,7 +96,7 @@ gameOver = function() {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
         }
 
         body {
@@ -110,6 +110,28 @@ gameOver = function() {
             margin: 0 auto;
         }
 
+        /* Загрузчик */
+        .loader-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(138, 43, 226, 0.3);
+            border-top: 5px solid #8a2be2;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         /* Шапка */
         .header {
             background: rgba(20, 10, 30, 0.9);
@@ -121,13 +143,6 @@ gameOver = function() {
             justify-content: space-between;
             align-items: center;
             border: 1px solid rgba(138, 43, 226, 0.3);
-            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.3);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
         }
 
         .logo h1 {
@@ -141,7 +156,6 @@ gameOver = function() {
             display: flex;
             align-items: center;
             gap: 15px;
-            flex-wrap: wrap;
         }
 
         .user-avatar {
@@ -155,12 +169,6 @@ gameOver = function() {
             color: white;
             font-size: 24px;
             cursor: pointer;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s;
-        }
-
-        .user-avatar:hover {
-            transform: scale(1.1);
         }
 
         .user-details {
@@ -187,10 +195,6 @@ gameOver = function() {
             font-size: 12px;
         }
 
-        .admin-badge {
-            background: linear-gradient(135deg, #ff4757 0%, #8b0000 100%);
-        }
-
         /* Навигация */
         .nav-menu {
             display: flex;
@@ -207,50 +211,21 @@ gameOver = function() {
             padding: 12px 25px;
             border-radius: 30px;
             cursor: pointer;
-            transition: all 0.3s;
             white-space: nowrap;
             font-weight: 600;
         }
 
         .nav-btn.active {
             background: linear-gradient(135deg, #8a2be2 0%, #4a0080 100%);
-            border-color: transparent;
         }
 
-        .nav-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
-        }
-
-        /* Контентные страницы */
+        /* Страницы */
         .page {
             display: none;
         }
 
         .page.active {
             display: block;
-        }
-
-        /* Селектор валюты */
-        .currency-selector {
-            display: flex;
-            justify-content: flex-end;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .selector-btn {
-            background: rgba(30, 20, 40, 0.8);
-            border: 1px solid rgba(138, 43, 226, 0.5);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .selector-btn.active {
-            background: linear-gradient(135deg, #8a2be2 0%, #4a0080 100%);
         }
 
         /* Баланс */
@@ -266,33 +241,26 @@ gameOver = function() {
         .total-value {
             font-size: 48px;
             font-weight: 700;
-            text-shadow: 0 0 25px #8a2be2;
         }
 
-        /* Сетка для главной */
+        /* Сетка */
         .grid {
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: 20px;
-            margin-bottom: 20px;
         }
 
-        /* Список криптовалют */
+        /* Крипто список */
         .crypto-list {
             background: rgba(20, 10, 30, 0.8);
-            backdrop-filter: blur(10px);
             border-radius: 30px;
             padding: 20px;
-            border: 1px solid rgba(138, 43, 226, 0.3);
         }
 
         .section-title {
             color: white;
             margin-bottom: 15px;
             font-size: 18px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
         .crypto-item {
@@ -301,12 +269,6 @@ gameOver = function() {
             padding: 15px;
             border-bottom: 1px solid rgba(138, 43, 226, 0.3);
             cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .crypto-item:hover {
-            background: rgba(138, 43, 226, 0.1);
-            transform: translateX(5px);
         }
 
         .crypto-icon {
@@ -335,377 +297,35 @@ gameOver = function() {
         .crypto-name {
             color: white;
             font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .crypto-price {
-            color: #b19cd9;
-            font-size: 12px;
         }
 
         .crypto-amount {
             text-align: right;
-        }
-
-        .amount-value {
             color: white;
             font-weight: 700;
-            margin-bottom: 5px;
         }
 
-        .amount-fiat {
-            color: #b19cd9;
-            font-size: 12px;
-        }
-
-        /* Подарки */
-        .gifts-grid {
+        /* Кнопки действий */
+        .actions {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 15px;
-            padding: 20px;
-        }
-
-        .gift-card {
-            background: rgba(30, 20, 40, 0.8);
-            border: 1px solid rgba(138, 43, 226, 0.3);
-            border-radius: 20px;
-            padding: 15px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .gift-card:hover {
-            transform: translateY(-5px);
-            border-color: #8a2be2;
-            box-shadow: 0 10px 20px rgba(138, 43, 226, 0.3);
-        }
-
-        .gift-emoji {
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
-
-        .gift-name {
-            color: white;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .gift-price {
-            color: #ffd700;
-            font-size: 14px;
-        }
-
-        /* Маркет */
-        .market-tabs {
-            display: flex;
+            grid-template-columns: 1fr 1fr;
             gap: 10px;
             margin-bottom: 20px;
         }
 
-        .market-tab {
-            flex: 1;
-            padding: 12px;
+        .action-btn {
             background: rgba(30, 20, 40, 0.8);
             border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 20px;
+            padding: 15px;
             color: white;
-            border-radius: 15px;
-            cursor: pointer;
             text-align: center;
-        }
-
-        .market-tab.active {
-            background: linear-gradient(135deg, #8a2be2 0%, #4a0080 100%);
-        }
-
-        .market-search {
-            width: 100%;
-            padding: 15px;
-            background: rgba(30, 20, 40, 0.8);
-            border: 1px solid #8a2be2;
-            border-radius: 15px;
-            color: white;
-            margin-bottom: 20px;
-            font-size: 16px;
-        }
-
-        .market-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-        }
-
-        .market-item {
-            background: rgba(30, 20, 40, 0.8);
-            border: 1px solid rgba(138, 43, 226, 0.3);
-            border-radius: 20px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .market-item-title {
-            color: white;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .market-item-price {
-            color: #ffd700;
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .market-item-btn {
-            background: linear-gradient(135deg, #8a2be2 0%, #4a0080 100%);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 10px;
             cursor: pointer;
-            width: 100%;
-        }
-
-        /* Чаты */
-        .chats-container {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 20px;
-            height: 600px;
-        }
-
-        .chats-list {
-            background: rgba(20, 10, 30, 0.8);
-            border-radius: 20px;
-            padding: 15px;
-            overflow-y: auto;
-        }
-
-        .chat-item {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            border-bottom: 1px solid rgba(138, 43, 226, 0.3);
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .chat-item:hover {
-            background: rgba(138, 43, 226, 0.1);
-        }
-
-        .chat-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 20px;
-            background: #8a2be2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 10px;
-            color: white;
-        }
-
-        .chat-info {
-            flex: 1;
-        }
-
-        .chat-name {
-            color: white;
             font-weight: 600;
         }
 
-        .chat-last {
-            color: #b19cd9;
-            font-size: 12px;
-        }
-
-        .chat-window {
-            background: rgba(20, 10, 30, 0.8);
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .chat-header {
-            padding: 15px;
-            border-bottom: 1px solid rgba(138, 43, 226, 0.3);
-            color: white;
-            font-weight: 600;
-        }
-
-        .chat-messages {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-        }
-
-        .message {
-            margin-bottom: 10px;
-            display: flex;
-        }
-
-        .message.mine {
-            justify-content: flex-end;
-        }
-
-        .message-content {
-            max-width: 70%;
-            padding: 10px;
-            border-radius: 15px;
-            background: rgba(138, 43, 226, 0.2);
-            color: white;
-        }
-
-        .message.mine .message-content {
-            background: #8a2be2;
-        }
-
-        .chat-input {
-            display: flex;
-            padding: 15px;
-            gap: 10px;
-        }
-
-        .chat-input input {
-            flex: 1;
-            padding: 12px;
-            background: rgba(30, 20, 40, 0.8);
-            border: 1px solid #8a2be2;
-            border-radius: 10px;
-            color: white;
-        }
-
-        .chat-input button {
-            padding: 12px 20px;
+        .action-btn:hover {
             background: linear-gradient(135deg, #8a2be2 0%, #4a0080 100%);
-            border: none;
-            border-radius: 10px;
-            color: white;
-            cursor: pointer;
-        }
-
-        /* Профиль */
-        .profile-container {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 20px;
-        }
-
-        .profile-sidebar {
-            background: rgba(20, 10, 30, 0.8);
-            border-radius: 30px;
-            padding: 20px;
-        }
-
-        .profile-avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 75px;
-            background: linear-gradient(135deg, #8a2be2 0%, #4a0080 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            color: white;
-            font-size: 60px;
-            border: 4px solid #8a2be2;
-        }
-
-        .profile-stats {
-            margin-top: 20px;
-        }
-
-        .profile-stat {
-            display: flex;
-            justify-content: space-between;
-            color: white;
-            padding: 10px;
-            border-bottom: 1px solid rgba(138, 43, 226, 0.3);
-        }
-
-        .profile-content {
-            background: rgba(20, 10, 30, 0.8);
-            border-radius: 30px;
-            padding: 20px;
-        }
-
-        .profile-tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .profile-tab {
-            padding: 10px 20px;
-            background: rgba(30, 20, 40, 0.8);
-            border: 1px solid rgba(138, 43, 226, 0.3);
-            border-radius: 15px;
-            color: white;
-            cursor: pointer;
-        }
-
-        .profile-tab.active {
-            background: linear-gradient(135deg, #8a2be2 0%, #4a0080 100%);
-        }
-
-        .settings-form {
-            max-width: 500px;
-        }
-
-        .settings-form input {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            background: rgba(30, 20, 40, 0.8);
-            border: 1px solid #8a2be2;
-            border-radius: 10px;
-            color: white;
-        }
-
-        .settings-form button {
-            padding: 12px 30px;
-            background: linear-gradient(135deg, #8a2be2 0%, #4a0080 100%);
-            border: none;
-            border-radius: 10px;
-            color: white;
-            cursor: pointer;
-        }
-
-        .username-list {
-            margin-top: 20px;
-        }
-
-        .username-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px;
-            background: rgba(30, 20, 40, 0.8);
-            border-radius: 10px;
-            margin-bottom: 10px;
-        }
-
-        .username-main {
-            color: white;
-            font-weight: 600;
-        }
-
-        .username-nft {
-            color: #ffd700;
-            font-size: 12px;
-        }
-
-        .username-set-btn {
-            padding: 5px 15px;
-            background: #8a2be2;
-            border: none;
-            border-radius: 5px;
-            color: white;
-            cursor: pointer;
         }
 
         /* Модальные окна */
@@ -731,10 +351,29 @@ gameOver = function() {
             border-radius: 40px;
             padding: 30px;
             width: 90%;
-            max-width: 500px;
+            max-width: 400px;
             border: 2px solid #8a2be2;
         }
 
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .close-btn {
+            font-size: 30px;
+            cursor: pointer;
+            color: #b19cd9;
+        }
+
+        .close-btn:hover {
+            color: #ff4757;
+        }
+
+        /* Уведомления */
         .notification {
             position: fixed;
             bottom: 20px;
@@ -752,196 +391,196 @@ gameOver = function() {
             transform: translateX(-50%) translateY(0);
         }
 
+        /* Поля ввода */
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            background: rgba(30, 20, 40, 0.8);
+            border: 1px solid #8a2be2;
+            border-radius: 10px;
+            color: white;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
         @media (max-width: 768px) {
-            .grid, .profile-container, .chats-container {
+            .grid {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Шапка -->
-        <div class="header">
-            <div class="logo">
-                <h1 onclick="showPage('main')">MODWALLET</h1>
-            </div>
-            <div class="user-info">
-                <div class="user-avatar" onclick="showProfile(currentUser.id)">👤</div>
-                <div class="user-details">
-                    <span class="user-name" id="headerUsername">Загрузка...</span>
-                    <span class="user-id" id="headerUserId"></span>
-                </div>
-                <span class="badge admin-badge" id="headerAdminBadge" style="display: none;">ADMIN</span>
-            </div>
-        </div>
-
-        <!-- Навигация -->
-        <div class="nav-menu">
-            <button class="nav-btn active" onclick="showPage('main')">🏠 Главная</button>
-            <button class="nav-btn" onclick="showPage('gifts')">🎁 Подарки</button>
-            <button class="nav-btn" onclick="showPage('market')">🛍️ Маркет</button>
-            <button class="nav-btn" onclick="showPage('chats')">💬 Чаты</button>
-            <button class="nav-btn" onclick="showPage('profile')">👤 Профиль</button>
-            <button class="nav-btn" onclick="showPage('settings')">⚙️ Настройки</button>
-        </div>
-
-        <!-- Главная страница -->
-        <div id="main-page" class="page active">
-            <div class="currency-selector">
-                <button class="selector-btn active" onclick="setCurrency('USD')">🇺🇸 USD</button>
-                <button class="selector-btn" onclick="setCurrency('RUB')">🇷🇺 RUB</button>
-            </div>
-
-            <div class="total-balance">
-                <div class="total-label" id="totalLabel">ОБЩИЙ БАЛАНС (USD)</div>
-                <div class="total-value" id="totalFiat">$0.00</div>
-            </div>
-
-            <div class="grid">
-                <div class="crypto-list">
-                    <div class="section-title">💰 Мои активы</div>
-                    <div id="cryptoList"></div>
-                </div>
-
-                <div class="gifts-section">
-                    <div class="section-title">
-                        🎁 Последние подарки
-                        <button class="nav-btn" onclick="showPage('gifts')">Все →</button>
-                    </div>
-                    <div id="recentGifts"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Страница подарков -->
-        <div id="gifts-page" class="page">
-            <h2 class="section-title">🎁 Все подарки</h2>
-            <div class="gifts-grid" id="allGiftsGrid"></div>
-        </div>
-
-        <!-- Страница маркета -->
-        <div id="market-page" class="page">
-            <h2 class="section-title">🛍️ Маркет</h2>
-            
-            <div class="market-tabs">
-                <button class="market-tab active" onclick="showMarketTab('numbers')">📞 Номера</button>
-                <button class="market-tab" onclick="showMarketTab('usernames')">🔤 NFT Юзернеймы</button>
-                <button class="market-tab" onclick="showMarketTab('my')">📦 Мои лоты</button>
-            </div>
-
-            <input type="text" class="market-search" id="marketSearch" placeholder="🔍 Поиск..." oninput="searchMarket()">
-
-            <div id="marketContent" class="market-grid"></div>
-        </div>
-
-        <!-- Страница чатов -->
-        <div id="chats-page" class="page">
-            <div class="chats-container">
-                <div class="chats-list">
-                    <h3 class="section-title">💬 Чаты</h3>
-                    <input type="text" class="market-search" placeholder="🔍 Поиск чатов..." oninput="searchChats(this.value)">
-                    <div id="chatsList"></div>
-                    <button class="market-tab" style="width:100%; margin-top:10px;" onclick="createGroup()">➕ Создать группу</button>
-                </div>
-
-                <div class="chat-window" id="chatWindow">
-                    <div class="chat-header" id="chatHeader">Выберите чат</div>
-                    <div class="chat-messages" id="chatMessages"></div>
-                    <div class="chat-input">
-                        <input type="text" id="messageInput" placeholder="Введите сообщение...">
-                        <button onclick="sendMessage()">➤</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Страница профиля -->
-        <div id="profile-page" class="page">
-            <div class="profile-container">
-                <div class="profile-sidebar">
-                    <div class="profile-avatar" id="profileAvatar">👤</div>
-                    <div class="profile-stats">
-                        <div class="profile-stat">
-                            <span>Основной юзернейм:</span>
-                            <span id="profileMainUsername"></span>
-                        </div>
-                        <div class="profile-stat">
-                            <span>ID:</span>
-                            <span id="profileId"></span>
-                        </div>
-                        <div class="profile-stat">
-                            <span>Всего подарков:</span>
-                            <span id="profileGiftsCount">0</span>
-                        </div>
-                        <div class="profile-stat">
-                            <span>Номер:</span>
-                            <span id="profilePhone">Не установлен</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="profile-content">
-                    <div class="profile-tabs">
-                        <button class="profile-tab active" onclick="showProfileTab('usernames')">🔤 Юзернеймы</button>
-                        <button class="profile-tab" onclick="showProfileTab('gifts')">🎁 Подарки</button>
-                        <button class="profile-tab" onclick="showProfileTab('nft')">🖼️ NFT</button>
-                    </div>
-
-                    <div id="profileTabContent"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Страница настроек -->
-        <div id="settings-page" class="page">
-            <h2 class="section-title">⚙️ Настройки профиля</h2>
-            
-            <div class="settings-form">
-                <h3 style="color:white; margin-bottom:15px;">Основной юзернейм</h3>
-                <input type="text" id="mainUsername" placeholder="Новый юзернейм (мин. 5 букв, без цифр в начале)">
-                <button onclick="changeMainUsername()">Изменить</button>
-
-                <h3 style="color:white; margin:20px 0 15px;">Установить номер</h3>
-                <select id="phoneSelect" style="width:100%; padding:12px; margin-bottom:15px; background:rgba(30,20,40,0.8); color:white; border:1px solid #8a2be2; border-radius:10px;"></select>
-                <button onclick="setPhone()">Установить</button>
-
-                <h3 style="color:white; margin:20px 0 15px;">Установить NFT юзернейм</h3>
-                <select id="nftUsernameSelect" style="width:100%; padding:12px; margin-bottom:15px; background:rgba(30,20,40,0.8); color:white; border:1px solid #8a2be2; border-radius:10px;"></select>
-                <button onclick="setNFTUsername()">Установить</button>
-
-                <h3 style="color:white; margin:20px 0 15px;">Мои NFT юзернеймы</h3>
-                <div id="myNFTUsernames"></div>
-                <button onclick="sellNFTUsername()" style="margin-top:10px;">Продать выбранный</button>
-            </div>
-        </div>
-
-        <!-- Модальное окно подарка -->
-        <div id="giftModal" class="modal">
-            <div class="modal-content">
-                <h3 style="color:white; margin-bottom:20px;">🎁 Отправить подарок</h3>
-                <input type="text" class="market-search" id="giftToUser" placeholder="ID получателя">
-                <select class="market-search" id="giftSelect"></select>
-                <button class="market-tab" onclick="sendGift()" style="width:100%; margin-top:10px;">Отправить</button>
-                <button class="market-tab" onclick="closeGiftModal()" style="width:100%; margin-top:10px; background:#ff4757;">Закрыть</button>
-            </div>
-        </div>
-
-        <!-- Модальное окно создания группы -->
-        <div id="groupModal" class="modal">
-            <div class="modal-content">
-                <h3 style="color:white; margin-bottom:20px;">➕ Создать группу</h3>
-                <input type="text" class="market-search" id="groupName" placeholder="Название группы">
-                <input type="text" class="market-search" id="groupEmoji" placeholder="Эмодзи аватарки (например 👥)">
-                <input type="text" class="market-search" id="groupUsername" placeholder="Юзернейм группы">
-                <button class="market-tab" onclick="createGroupConfirm()" style="width:100%; margin-top:10px;">Создать</button>
-                <button class="market-tab" onclick="closeGroupModal()" style="width:100%; margin-top:10px; background:#ff4757;">Закрыть</button>
-            </div>
-        </div>
-
-        <!-- Уведомление -->
-        <div class="notification" id="notification"></div>
+    <div id="loader" class="loader-container">
+        <div class="loader"></div>
     </div>
+
+    <div id="app" style="display: none;">
+        <div class="container">
+            <!-- Шапка -->
+            <div class="header">
+                <div class="logo">
+                    <h1 onclick="showPage('main')">MODWALLET</h1>
+                </div>
+                <div class="user-info">
+                    <div class="user-avatar" onclick="showProfile(currentUser?.id)">👤</div>
+                    <div class="user-details">
+                        <span class="user-name" id="username">Загрузка...</span>
+                        <span class="user-id" id="userId"></span>
+                    </div>
+                    <span class="badge" id="adminBadge" style="display: none;">ADMIN</span>
+                </div>
+            </div>
+
+            <!-- Навигация -->
+            <div class="nav-menu">
+                <button class="nav-btn active" onclick="showPage('main')">🏠 Главная</button>
+                <button class="nav-btn" onclick="showPage('gifts')">🎁 Подарки</button>
+                <button class="nav-btn" onclick="showPage('market')">🛍️ Маркет</button>
+                <button class="nav-btn" onclick="showPage('chats')">💬 Чаты</button>
+                <button class="nav-btn" onclick="showPage('profile')">👤 Профиль</button>
+                <button class="nav-btn" onclick="showPage('settings')">⚙️ Настройки</button>
+            </div>
+
+            <!-- Главная страница -->
+            <div id="main-page" class="page active">
+                <div class="total-balance">
+                    <div class="total-label">ОБЩИЙ БАЛАНС (USD)</div>
+                    <div class="total-value" id="totalBalance">$0.00</div>
+                </div>
+
+                <div class="grid">
+                    <div class="crypto-list">
+                        <div class="section-title">💰 Мои активы</div>
+                        <div id="cryptoList"></div>
+                    </div>
+
+                    <div>
+                        <div class="actions">
+                            <div class="action-btn" onclick="openSendModal()">📤 Перевод</div>
+                            <div class="action-btn" onclick="openTopUpModal()">💰 Пополнить</div>
+                        </div>
+                        <div class="crypto-list">
+                            <div class="section-title">🎁 Последние подарки</div>
+                            <div id="recentGifts"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Подарки -->
+            <div id="gifts-page" class="page">
+                <h2 class="section-title">🎁 Все подарки</h2>
+                <div class="actions">
+                    <div class="action-btn" onclick="openGiftModal()">📤 Отправить подарок</div>
+                </div>
+                <div class="grid" id="giftsGrid"></div>
+            </div>
+
+            <!-- Маркет -->
+            <div id="market-page" class="page">
+                <h2 class="section-title">🛍️ Маркет</h2>
+                <input type="text" id="marketSearch" placeholder="🔍 Поиск..." oninput="searchMarket()">
+                <div class="actions">
+                    <div class="action-btn" onclick="showMarketTab('numbers')">📞 Номера</div>
+                    <div class="action-btn" onclick="showMarketTab('nft')">🔤 NFT</div>
+                </div>
+                <div id="marketContent"></div>
+            </div>
+
+            <!-- Чаты -->
+            <div id="chats-page" class="page">
+                <h2 class="section-title">💬 Чаты</h2>
+                <input type="text" id="chatSearch" placeholder="🔍 Поиск пользователей..." oninput="searchUsers()">
+                <div class="actions">
+                    <div class="action-btn" onclick="createGroup()">➕ Создать группу</div>
+                </div>
+                <div id="chatsList"></div>
+            </div>
+
+            <!-- Профиль -->
+            <div id="profile-page" class="page">
+                <h2 class="section-title">👤 Профиль</h2>
+                <div class="crypto-list">
+                    <div class="section-title" id="profileUsername"></div>
+                    <div class="section-title" id="profileId"></div>
+                    <div class="section-title">🎁 Подарки</div>
+                    <div id="profileGifts"></div>
+                </div>
+            </div>
+
+            <!-- Настройки -->
+            <div id="settings-page" class="page">
+                <h2 class="section-title">⚙️ Настройки</h2>
+                <div class="crypto-list">
+                    <h3 style="color:white;">Сменить юзернейм</h3>
+                    <input type="text" id="newUsername" placeholder="Новый юзернейм (мин. 5 букв)">
+                    <button class="action-btn" onclick="changeUsername()">Изменить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно перевода -->
+    <div id="sendModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📤 Перевод</h3>
+                <span class="close-btn" onclick="closeModal('sendModal')">×</span>
+            </div>
+            <input type="text" id="sendToId" placeholder="ID получателя">
+            <select id="sendCurrency">
+                <option value="btc">Bitcoin</option>
+                <option value="sol">Solana</option>
+                <option value="usdt">USDT</option>
+                <option value="ton">TON</option>
+                <option value="doge">Dogecoin</option>
+                <option value="stars">Stars</option>
+            </select>
+            <input type="number" id="sendAmount" placeholder="Сумма">
+            <button class="action-btn" onclick="sendMoney()">Отправить</button>
+        </div>
+    </div>
+
+    <!-- Модальное окно пополнения -->
+    <div id="topupModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>💰 Пополнить</h3>
+                <span class="close-btn" onclick="closeModal('topupModal')">×</span>
+            </div>
+            <select id="topupCurrency">
+                <option value="btc">Bitcoin</option>
+                <option value="sol">Solana</option>
+                <option value="usdt">USDT</option>
+                <option value="ton">TON</option>
+                <option value="doge">Dogecoin</option>
+                <option value="stars">Stars</option>
+            </select>
+            <input type="number" id="topupAmount" placeholder="Сумма в USD">
+            <input type="text" id="cardNumber" placeholder="Номер карты (любой)">
+            <button class="action-btn" onclick="topUp()">Пополнить</button>
+        </div>
+    </div>
+
+    <!-- Модальное окно подарка -->
+    <div id="giftModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🎁 Отправить подарок</h3>
+                <span class="close-btn" onclick="closeModal('giftModal')">×</span>
+            </div>
+            <input type="text" id="giftToId" placeholder="ID получателя">
+            <select id="giftSelect"></select>
+            <button class="action-btn" onclick="sendGift()">Отправить</button>
+        </div>
+    </div>
+
+    <!-- Уведомление -->
+    <div class="notification" id="notification"></div>
 
     <script>
         // ========== КОНФИГУРАЦИЯ FIREBASE ==========
@@ -960,563 +599,10 @@ gameOver = function() {
         const db = firebase.firestore();
 
         // ========== ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ==========
-        let currentUser = {
-            uid: null,
-            id: 'MOD-12345',
-            username: 'Модекс',
-            isAdmin: false,
-            balances: {
-                btc: 0.02345678,
-                sol: 45.67,
-                usdt: 500,
-                ton: 123.45,
-                doge: 5000,
-                stars: 1000
-            },
-            phones: [], // Купленные номера
-            currentPhone: null,
-            nftUsernames: [], // Купленные NFT юзернеймы
-            currentNFTUsername: null,
-            gifts: [], // Полученные подарки
-            username: 'Модекс', // Основной юзернейм
-            customId: 'MOD-12345'
-        };
+        let currentUser = null;
+        let currentPage = 'main';
 
-        let currentFiat = 'USD';
-        const RUB_TO_USD = 90;
-        let currentChat = null;
-        let marketItems = [];
-
-        // ========== ИНИЦИАЛИЗАЦИЯ ==========
-        document.addEventListener('DOMContentLoaded', function() {
-            checkAuth();
-        });
-
-        function checkAuth() {
-            auth.onAuthStateChanged(async (user) => {
-                if (!user) {
-                    window.location.href = 'index.html';
-                    return;
-                }
-
-                currentUser.uid = user.uid;
-                await loadUserData(user.uid);
-                init();
-            });
-        }
-
-        async function loadUserData(uid) {
-            try {
-                const userDoc = await db.collection('users').doc(uid).get();
-                const userData = userDoc.data();
-                
-                if (userData) {
-                    currentUser.id = userData.customId || uid.slice(0, 8).toUpperCase();
-                    currentUser.username = userData.username || 'Пользователь';
-                    currentUser.isAdmin = userData.isAdmin || false;
-                    currentUser.balances = userData.balances || currentUser.balances;
-                    currentUser.phones = userData.phones || [];
-                    currentUser.currentPhone = userData.currentPhone || null;
-                    currentUser.nftUsernames = userData.nftUsernames || [];
-                    currentUser.currentNFTUsername = userData.currentNFTUsername || null;
-                    currentUser.gifts = userData.gifts || [];
-                    currentUser.customId = userData.customId || currentUser.id;
-                }
-            } catch (error) {
-                console.error('Ошибка загрузки данных:', error);
-            }
-        }
-
-        function init() {
-            updateUI();
-            loadMarketItems();
-            loadGifts();
-            loadChats();
-            updateHeader();
-            showPage('main');
-        }
-
-        // ========== НАВИГАЦИЯ ==========
-        function showPage(page) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById(page + '-page').classList.add('active');
-            
-            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            if (page === 'gifts') loadAllGifts();
-            if (page === 'market') loadMarketItems();
-            if (page === 'chats') loadChats();
-            if (page === 'profile') loadProfile(currentUser.id);
-            if (page === 'settings') loadSettings();
-        }
-
-        // ========== UI ФУНКЦИИ ==========
-        function updateUI() {
-            document.getElementById('headerUsername').textContent = currentUser.username;
-            document.getElementById('headerUserId').textContent = `ID: ${currentUser.id}`;
-            
-            if (currentUser.isAdmin) {
-                document.getElementById('headerAdminBadge').style.display = 'inline-block';
-            }
-
-            let totalUSD = 0;
-            for (let [currency, amount] of Object.entries(currentUser.balances)) {
-                totalUSD += amount * PRICES[currency];
-            }
-
-            const totalFiat = currentFiat === 'USD' ? totalUSD : totalUSD * RUB_TO_USD;
-            document.getElementById('totalFiat').textContent = currentFiat === 'USD' ? '$' + totalFiat.toFixed(2) : '₽' + totalFiat.toFixed(2);
-            document.getElementById('totalLabel').textContent = `ОБЩИЙ БАЛАНС (${currentFiat})`;
-
-            updateCryptoList();
-        }
-
-        function updateCryptoList() {
-            const cryptoList = document.getElementById('cryptoList');
-            if (!cryptoList) return;
-            
-            cryptoList.innerHTML = '';
-            const currencies = ['btc', 'sol', 'usdt', 'ton', 'doge', 'stars'];
-            
-            currencies.forEach(currency => {
-                const amount = currentUser.balances[currency] || 0;
-                const usdValue = amount * PRICES[currency];
-                const fiatValue = currentFiat === 'USD' ? usdValue : usdValue * RUB_TO_USD;
-                
-                cryptoList.innerHTML += `
-                    <div class="crypto-item" onclick="openSendModal('${currency}')">
-                        <div class="crypto-icon ${currency}">${CURRENCY_SYMBOLS[currency]}</div>
-                        <div class="crypto-details">
-                            <div class="crypto-name">${CURRENCY_NAMES[currency]}</div>
-                            <div class="crypto-price">1 ${currency.toUpperCase()} = ${formatFiat(PRICES[currency])}</div>
-                        </div>
-                        <div class="crypto-amount">
-                            <div class="amount-value">${formatCrypto(currency, amount)}</div>
-                            <div class="amount-fiat">${formatFiat(fiatValue)}</div>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        // ========== ПОДАРКИ ==========
-        const GIFTS = [
-            { id: 1, name: '🎂 ДР', emoji: '🎂', price: 100 },
-            { id: 2, name: '💐 Цветы', emoji: '💐', price: 50 },
-            { id: 3, name: '🍫 Конфеты', emoji: '🍫', price: 30 },
-            { id: 4, name: '🧸 Мишка', emoji: '🧸', price: 75 },
-            { id: 5, name: '⌚ Часы', emoji: '⌚', price: 200 },
-            { id: 6, name: '💍 Кольцо', emoji: '💍', price: 500 }
-        ];
-
-        function loadGifts() {
-            const recent = document.getElementById('recentGifts');
-            if (recent) {
-                recent.innerHTML = '';
-                GIFTS.slice(0, 3).forEach(gift => {
-                    recent.innerHTML += `
-                        <div class="gift-card" onclick="openGiftModal(${gift.id})">
-                            <div class="gift-emoji">${gift.emoji}</div>
-                            <div class="gift-name">${gift.name}</div>
-                            <div class="gift-price">${gift.price} ⭐</div>
-                        </div>
-                    `;
-                });
-            }
-        }
-
-        function loadAllGifts() {
-            const grid = document.getElementById('allGiftsGrid');
-            grid.innerHTML = '';
-            
-            GIFTS.forEach(gift => {
-                grid.innerHTML += `
-                    <div class="gift-card" onclick="openGiftModal(${gift.id})">
-                        <div class="gift-emoji">${gift.emoji}</div>
-                        <div class="gift-name">${gift.name}</div>
-                        <div class="gift-price">${gift.price} ⭐</div>
-                    </div>
-                `;
-            });
-        }
-
-        function openGiftModal(giftId) {
-            const gift = GIFTS.find(g => g.id === giftId);
-            document.getElementById('giftModal').classList.add('active');
-            
-            const select = document.getElementById('giftSelect');
-            select.innerHTML = `<option value="${gift.id}">${gift.name} - ${gift.price} ⭐</option>`;
-        }
-
-        function closeGiftModal() {
-            document.getElementById('giftModal').classList.remove('active');
-        }
-
-        async function sendGift() {
-            const toId = document.getElementById('giftToUser').value;
-            const giftId = document.getElementById('giftSelect').value;
-            const gift = GIFTS.find(g => g.id == giftId);
-
-            if (!toId) {
-                showNotification('❌ Введите ID получателя');
-                return;
-            }
-
-            if (currentUser.balances.stars < gift.price) {
-                showNotification('❌ Недостаточно звезд');
-                return;
-            }
-
-            currentUser.balances.stars -= gift.price;
-            
-            // Сохраняем подарок в Firebase
-            const giftData = {
-                giftId: gift.id,
-                name: gift.name,
-                emoji: gift.emoji,
-                from: currentUser.id,
-                fromName: currentUser.username,
-                date: new Date().toISOString()
-            };
-
-            // Здесь нужно добавить сохранение в Firestore
-            await db.collection('users').where('id', '==', toId).get().then(snapshot => {
-                snapshot.forEach(doc => {
-                    db.collection('users').doc(doc.id).update({
-                        gifts: firebase.firestore.FieldValue.arrayUnion(giftData)
-                    });
-                });
-            });
-
-            showNotification(`✅ Подарок отправлен пользователю ${toId}`);
-            closeGiftModal();
-            updateUI();
-        }
-
-        // ========== МАРКЕТ ==========
-        const PHONE_NUMBERS = [
-            { number: '+7 (999) 123-45-67', price: 10000, type: 'premium' },
-            { number: '+7 (999) 888-77-66', price: 15000, type: 'premium' },
-            { number: '+7 (999) 000-11-22', price: 20000, type: 'premium' },
-            { number: '+888 1234', price: 800000, type: 'gold' },
-            { number: '+888 5678', price: 800000, type: 'gold' },
-            { number: '+888 99999999', price: 50000, type: 'silver' },
-            { number: '+888 88888888', price: 50000, type: 'silver' }
-        ];
-
-        function loadMarketItems() {
-            const marketContent = document.getElementById('marketContent');
-            if (!marketContent) return;
-
-            const search = document.getElementById('marketSearch')?.value.toLowerCase() || '';
-            const activeTab = document.querySelector('.market-tab.active')?.textContent.includes('Номера') ? 'numbers' : 'usernames';
-
-            if (activeTab === 'numbers') {
-                marketContent.innerHTML = '';
-                PHONE_NUMBERS.filter(p => p.number.includes(search)).forEach(phone => {
-                    marketContent.innerHTML += `
-                        <div class="market-item">
-                            <div class="market-item-title">📞 ${phone.number}</div>
-                            <div class="market-item-price">${phone.price} TON</div>
-                            <button class="market-item-btn" onclick="buyPhone('${phone.number}', ${phone.price})">Купить</button>
-                        </div>
-                    `;
-                });
-            } else {
-                // Здесь будут NFT юзернеймы
-                marketContent.innerHTML = '<div class="market-item">Скоро появятся NFT юзернеймы</div>';
-            }
-        }
-
-        function showMarketTab(tab) {
-            document.querySelectorAll('.market-tab').forEach(t => t.classList.remove('active'));
-            event.target.classList.add('active');
-            loadMarketItems();
-        }
-
-        function searchMarket() {
-            loadMarketItems();
-        }
-
-        async function buyPhone(number, price) {
-            if (currentUser.balances.ton < price) {
-                showNotification('❌ Недостаточно TON');
-                return;
-            }
-
-            currentUser.balances.ton -= price;
-            currentUser.phones.push(number);
-            
-            await db.collection('users').doc(currentUser.uid).update({
-                balances: currentUser.balances,
-                phones: currentUser.phones
-            });
-
-            showNotification(`✅ Номер ${number} куплен!`);
-            updateUI();
-        }
-
-        // ========== ЧАТЫ ==========
-        let chats = [
-            { id: 'chat1', name: 'Модекс', type: 'private', lastMessage: 'Привет!', avatar: '👤' },
-            { id: 'chat2', name: 'Crypto Chat', type: 'group', lastMessage: 'Новый курс!', avatar: '👥' }
-        ];
-
-        let messages = {
-            'chat1': [
-                { from: 'Модекс', text: 'Привет!', time: '10:00', mine: false },
-                { from: 'me', text: 'Здарова!', time: '10:01', mine: true }
-            ]
-        };
-
-        function loadChats() {
-            const list = document.getElementById('chatsList');
-            list.innerHTML = '';
-
-            chats.forEach(chat => {
-                list.innerHTML += `
-                    <div class="chat-item" onclick="selectChat('${chat.id}')">
-                        <div class="chat-avatar">${chat.avatar}</div>
-                        <div class="chat-info">
-                            <div class="chat-name">${chat.name}</div>
-                            <div class="chat-last">${chat.lastMessage}</div>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        function selectChat(chatId) {
-            currentChat = chatId;
-            const chat = chats.find(c => c.id === chatId);
-            document.getElementById('chatHeader').textContent = chat.name;
-
-            const messagesDiv = document.getElementById('chatMessages');
-            messagesDiv.innerHTML = '';
-
-            (messages[chatId] || []).forEach(msg => {
-                messagesDiv.innerHTML += `
-                    <div class="message ${msg.mine ? 'mine' : ''}">
-                        <div class="message-content">${msg.text}</div>
-                    </div>
-                `;
-            });
-        }
-
-        function sendMessage() {
-            if (!currentChat) return;
-
-            const input = document.getElementById('messageInput');
-            const text = input.value;
-            if (!text) return;
-
-            if (!messages[currentChat]) messages[currentChat] = [];
-            messages[currentChat].push({
-                from: 'me',
-                text: text,
-                time: new Date().toLocaleTimeString().slice(0,5),
-                mine: true
-            });
-
-            selectChat(currentChat);
-            input.value = '';
-        }
-
-        function searchChats(query) {
-            // Фильтрация чатов
-        }
-
-        function createGroup() {
-            document.getElementById('groupModal').classList.add('active');
-        }
-
-        function closeGroupModal() {
-            document.getElementById('groupModal').classList.remove('active');
-        }
-
-        async function createGroupConfirm() {
-            const name = document.getElementById('groupName').value;
-            const emoji = document.getElementById('groupEmoji').value;
-            const username = document.getElementById('groupUsername').value;
-
-            if (!name || !emoji || !username) {
-                showNotification('❌ Заполните все поля');
-                return;
-            }
-
-            // Проверка уникальности юзернейма
-            const existing = chats.find(c => c.username === username);
-            if (existing) {
-                showNotification('❌ Юзернейм уже занят');
-                return;
-            }
-
-            const newChat = {
-                id: 'group_' + Date.now(),
-                name: name,
-                username: username,
-                type: 'group',
-                lastMessage: 'Группа создана',
-                avatar: emoji
-            };
-
-            chats.push(newChat);
-            loadChats();
-            closeGroupModal();
-            showNotification('✅ Группа создана!');
-        }
-
-        // ========== ПРОФИЛЬ ==========
-        function showProfile(userId) {
-            showPage('profile');
-            loadProfile(userId);
-        }
-
-        function loadProfile(userId) {
-            document.getElementById('profileMainUsername').textContent = currentUser.username;
-            document.getElementById('profileId').textContent = currentUser.id;
-            document.getElementById('profileGiftsCount').textContent = currentUser.gifts?.length || 0;
-            document.getElementById('profilePhone').textContent = currentUser.currentPhone || 'Не установлен';
-            
-            showProfileTab('usernames');
-        }
-
-        function showProfileTab(tab) {
-            document.querySelectorAll('.profile-tab').forEach(t => t.classList.remove('active'));
-            event.target.classList.add('active');
-
-            const content = document.getElementById('profileTabContent');
-            
-            if (tab === 'usernames') {
-                let html = '<h3 style="color:white; margin-bottom:15px;">Мои юзернеймы</h3>';
-                
-                // Основной
-                html += `
-                    <div class="username-item">
-                        <div>
-                            <span class="username-main">${currentUser.username}</span>
-                            <span class="username-nft">(основной)</span>
-                        </div>
-                    </div>
-                `;
-
-                // NFT
-                currentUser.nftUsernames?.forEach(nft => {
-                    html += `
-                        <div class="username-item">
-                            <div>
-                                <span class="username-main">${nft}</span>
-                                <span class="username-nft">(NFT)</span>
-                            </div>
-                            <button class="username-set-btn" onclick="setActiveNFT('${nft}')">Использовать</button>
-                        </div>
-                    `;
-                });
-
-                content.innerHTML = html;
-            } else if (tab === 'gifts') {
-                let html = '<h3 style="color:white; margin-bottom:15px;">Полученные подарки</h3>';
-                
-                currentUser.gifts?.forEach(gift => {
-                    html += `
-                        <div class="gift-card" style="margin-bottom:10px;">
-                            <div class="gift-emoji">${gift.emoji}</div>
-                            <div class="gift-name">${gift.name}</div>
-                            <div class="gift-price">от ${gift.fromName}</div>
-                            <div style="color:#b19cd9; font-size:12px;">${new Date(gift.date).toLocaleDateString()}</div>
-                        </div>
-                    `;
-                });
-
-                content.innerHTML = html || '<p style="color:#b19cd9;">Нет подарков</p>';
-            }
-        }
-
-        function setActiveNFT(nft) {
-            currentUser.currentNFTUsername = nft;
-            showNotification(`✅ NFT юзернейм ${nft} установлен`);
-        }
-
-        // ========== НАСТРОЙКИ ==========
-        function loadSettings() {
-            // Загрузка номеров
-            const phoneSelect = document.getElementById('phoneSelect');
-            phoneSelect.innerHTML = '<option value="">Не выбран</option>';
-            currentUser.phones?.forEach(phone => {
-                phoneSelect.innerHTML += `<option value="${phone}">${phone}</option>`;
-            });
-
-            // Загрузка NFT
-            const nftSelect = document.getElementById('nftUsernameSelect');
-            nftSelect.innerHTML = '<option value="">Не выбран</option>';
-            currentUser.nftUsernames?.forEach(nft => {
-                nftSelect.innerHTML += `<option value="${nft}">${nft}</option>`;
-            });
-
-            // Мои NFT
-            const myNFT = document.getElementById('myNFTUsernames');
-            myNFT.innerHTML = '';
-            currentUser.nftUsernames?.forEach(nft => {
-                myNFT.innerHTML += `
-                    <div class="username-item">
-                        <span class="username-main">${nft}</span>
-                        <input type="number" id="price_${nft}" placeholder="Цена в TON" style="width:100px; padding:5px;">
-                    </div>
-                `;
-            });
-        }
-
-        async function changeMainUsername() {
-            const newUsername = document.getElementById('mainUsername').value;
-            
-            if (newUsername.length < 5) {
-                showNotification('❌ Минимум 5 символов');
-                return;
-            }
-
-            if (/^[0-9]/.test(newUsername)) {
-                showNotification('❌ Юзернейм не может начинаться с цифры');
-                return;
-            }
-
-            // Проверка уникальности
-            const existing = await db.collection('users').where('username', '==', newUsername).get();
-            if (!existing.empty) {
-                showNotification('❌ Юзернейм уже занят');
-                return;
-            }
-
-            currentUser.username = newUsername;
-            await db.collection('users').doc(currentUser.uid).update({
-                username: newUsername
-            });
-
-            updateUI();
-            showNotification('✅ Юзернейм изменен');
-        }
-
-        function setPhone() {
-            const phone = document.getElementById('phoneSelect').value;
-            if (phone) {
-                currentUser.currentPhone = phone;
-                showNotification('✅ Номер установлен');
-            }
-        }
-
-        function setNFTUsername() {
-            const nft = document.getElementById('nftUsernameSelect').value;
-            if (nft) {
-                currentUser.currentNFTUsername = nft;
-                showNotification('✅ NFT юзернейм установлен');
-            }
-        }
-
-        function sellNFTUsername() {
-            showNotification('✅ NFT юзернейм выставлен на продажу');
-        }
-
-        // ========== ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ==========
+        // Цены криптовалют
         const PRICES = {
             btc: 65000,
             sol: 145,
@@ -1532,7 +618,7 @@ gameOver = function() {
             usdt: 'USDT',
             ton: 'TON',
             doge: 'Dogecoin',
-            stars: 'Telegram Stars'
+            stars: 'Stars'
         };
 
         const CURRENCY_SYMBOLS = {
@@ -1544,40 +630,471 @@ gameOver = function() {
             stars: '⭐'
         };
 
+        // Подарки
+        const GIFTS = [
+            { id: 1, name: 'День рождения', emoji: '🎂', price: 100 },
+            { id: 2, name: 'Цветы', emoji: '💐', price: 50 },
+            { id: 3, name: 'Конфеты', emoji: '🍫', price: 30 },
+            { id: 4, name: 'Мишка', emoji: '🧸', price: 75 },
+            { id: 5, name: 'Часы', emoji: '⌚', price: 200 },
+            { id: 6, name: 'Кольцо', emoji: '💍', price: 500 }
+        ];
+
+        // ========== ПРОВЕРКА АВТОРИЗАЦИИ ==========
+        auth.onAuthStateChanged(async (user) => {
+            if (!user) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            await loadUserData(user);
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('app').style.display = 'block';
+            updateUI();
+        });
+
+        async function loadUserData(user) {
+            try {
+                const userDoc = await db.collection('users').doc(user.uid).get();
+                
+                if (!userDoc.exists) {
+                    // Новый пользователь - создаем запись
+                    const newUser = {
+                        uid: user.uid,
+                        username: user.email.split('@')[0],
+                        email: user.email,
+                        customId: generateCustomId(),
+                        isAdmin: false,
+                        balances: {
+                            btc: 0,
+                            sol: 0,
+                            usdt: 100,
+                            ton: 10,
+                            doge: 0,
+                            stars: 50
+                        },
+                        gifts: [],
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                    };
+                    
+                    await db.collection('users').doc(user.uid).set(newUser);
+                    currentUser = newUser;
+                } else {
+                    currentUser = userDoc.data();
+                    currentUser.uid = user.uid;
+                }
+            } catch (error) {
+                console.error('Ошибка загрузки:', error);
+                showNotification('❌ Ошибка загрузки данных');
+            }
+        }
+
+        // Генератор случайного ID
+        function generateCustomId() {
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const numbers = '0123456789';
+            let id = 'MOD-';
+            for (let i = 0; i < 4; i++) {
+                id += letters[Math.floor(Math.random() * letters.length)];
+            }
+            for (let i = 0; i < 4; i++) {
+                id += numbers[Math.floor(Math.random() * numbers.length)];
+            }
+            return id;
+        }
+
+        // ========== НАВИГАЦИЯ ==========
+        function showPage(page) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(page + '-page').classList.add('active');
+            
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            currentPage = page;
+            
+            // Загружаем контент для страницы
+            if (page === 'gifts') loadGiftsPage();
+            if (page === 'market') loadMarket();
+            if (page === 'profile') loadProfile();
+            if (page === 'settings') loadSettings();
+        }
+
+        // ========== ОБНОВЛЕНИЕ ИНТЕРФЕЙСА ==========
+        function updateUI() {
+            if (!currentUser) return;
+
+            document.getElementById('username').textContent = currentUser.username || 'Пользователь';
+            document.getElementById('userId').textContent = `ID: ${currentUser.customId || 'MOD-1234'}`;
+            
+            if (currentUser.isAdmin) {
+                document.getElementById('adminBadge').style.display = 'inline-block';
+            }
+
+            // Общий баланс
+            let total = 0;
+            for (let [currency, amount] of Object.entries(currentUser.balances)) {
+                total += amount * PRICES[currency];
+            }
+            document.getElementById('totalBalance').textContent = '$' + total.toFixed(2);
+
+            // Список криптовалют
+            const cryptoList = document.getElementById('cryptoList');
+            if (cryptoList) {
+                cryptoList.innerHTML = '';
+                const currencies = ['btc', 'sol', 'usdt', 'ton', 'doge', 'stars'];
+                
+                currencies.forEach(currency => {
+                    const amount = currentUser.balances[currency] || 0;
+                    cryptoList.innerHTML += `
+                        <div class="crypto-item" onclick="openSendModal('${currency}')">
+                            <div class="crypto-icon ${currency}">${CURRENCY_SYMBOLS[currency]}</div>
+                            <div class="crypto-details">
+                                <div class="crypto-name">${CURRENCY_NAMES[currency]}</div>
+                            </div>
+                            <div class="crypto-amount">${formatCrypto(currency, amount)}</div>
+                        </div>
+                    `;
+                });
+            }
+
+            // Последние подарки
+            const recentGifts = document.getElementById('recentGifts');
+            if (recentGifts) {
+                recentGifts.innerHTML = '';
+                const userGifts = currentUser.gifts || [];
+                userGifts.slice(-3).forEach(gift => {
+                    recentGifts.innerHTML += `
+                        <div class="crypto-item">
+                            <div class="crypto-icon">${gift.emoji}</div>
+                            <div class="crypto-details">
+                                <div class="crypto-name">${gift.name}</div>
+                                <div style="color:#b19cd9; font-size:12px;">от ${gift.from}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+        }
+
         function formatCrypto(currency, amount) {
             if (currency === 'btc') return amount.toFixed(8);
             if (currency === 'usdt' || currency === 'stars') return amount.toFixed(2);
-            return amount.toFixed(6);
+            return amount.toFixed(4);
         }
 
-        function formatFiat(amount) {
-            if (currentFiat === 'USD') return '$' + amount.toFixed(2);
-            return '₽' + amount.toFixed(2);
+        // ========== ПЕРЕВОДЫ ==========
+        function openSendModal(currency) {
+            if (currency) {
+                document.getElementById('sendCurrency').value = currency;
+            }
+            document.getElementById('sendModal').classList.add('active');
         }
 
-        function setCurrency(currency) {
-            currentFiat = currency;
-            document.querySelectorAll('.selector-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.textContent.includes(currency)) btn.classList.add('active');
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        async function sendMoney() {
+            const toId = document.getElementById('sendToId').value;
+            const currency = document.getElementById('sendCurrency').value;
+            const amount = parseFloat(document.getElementById('sendAmount').value);
+
+            if (!toId || !amount || amount <= 0) {
+                showNotification('❌ Заполните все поля');
+                return;
+            }
+
+            if (currentUser.balances[currency] < amount) {
+                showNotification('❌ Недостаточно средств');
+                return;
+            }
+
+            // Ищем получателя
+            const usersRef = db.collection('users');
+            const snapshot = await usersRef.where('customId', '==', toId).get();
+            
+            if (snapshot.empty) {
+                showNotification('❌ Пользователь не найден');
+                return;
+            }
+
+            // Обновляем балансы
+            currentUser.balances[currency] -= amount;
+            
+            const receiverDoc = snapshot.docs[0];
+            const receiverData = receiverDoc.data();
+            receiverData.balances[currency] = (receiverData.balances[currency] || 0) + amount;
+
+            await db.collection('users').doc(currentUser.uid).update({
+                balances: currentUser.balances
             });
+
+            await db.collection('users').doc(receiverDoc.id).update({
+                balances: receiverData.balances
+            });
+
+            showNotification(`✅ Отправлено ${amount} ${currency} на ID: ${toId}`);
+            closeModal('sendModal');
             updateUI();
         }
 
-        function openSendModal(currency) {
-            alert(`Перевод ${CURRENCY_NAMES[currency]} будет доступен в следующем обновлении`);
+        // ========== ПОПОЛНЕНИЕ ==========
+        function openTopUpModal() {
+            document.getElementById('topupModal').classList.add('active');
         }
 
+        async function topUp() {
+            const currency = document.getElementById('topupCurrency').value;
+            const usdAmount = parseFloat(document.getElementById('topupAmount').value);
+            
+            if (!usdAmount || usdAmount <= 0) {
+                showNotification('❌ Введите сумму');
+                return;
+            }
+
+            const cryptoAmount = usdAmount / PRICES[currency];
+            currentUser.balances[currency] += cryptoAmount;
+
+            await db.collection('users').doc(currentUser.uid).update({
+                balances: currentUser.balances
+            });
+
+            showNotification(`✅ Пополнено на ${cryptoAmount.toFixed(4)} ${currency}`);
+            closeModal('topupModal');
+            updateUI();
+        }
+
+        // ========== ПОДАРКИ ==========
+        function loadGiftsPage() {
+            const grid = document.getElementById('giftsGrid');
+            if (!grid) return;
+            
+            grid.innerHTML = '';
+            GIFTS.forEach(gift => {
+                grid.innerHTML += `
+                    <div class="crypto-list">
+                        <div style="text-align:center; padding:20px;">
+                            <div style="font-size:50px;">${gift.emoji}</div>
+                            <div style="color:white;">${gift.name}</div>
+                            <div style="color:#ffd700;">${gift.price} ⭐</div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Заполняем select
+            const select = document.getElementById('giftSelect');
+            if (select) {
+                select.innerHTML = '';
+                GIFTS.forEach(gift => {
+                    select.innerHTML += `<option value="${gift.id}">${gift.name} - ${gift.price} ⭐</option>`;
+                });
+            }
+        }
+
+        function openGiftModal() {
+            loadGiftsPage(); // Обновляем select
+            document.getElementById('giftModal').classList.add('active');
+        }
+
+        async function sendGift() {
+            const toId = document.getElementById('giftToId').value;
+            const giftId = document.getElementById('giftSelect').value;
+            const gift = GIFTS.find(g => g.id == giftId);
+
+            if (!toId) {
+                showNotification('❌ Введите ID получателя');
+                return;
+            }
+
+            if (currentUser.balances.stars < gift.price) {
+                showNotification('❌ Недостаточно звезд');
+                return;
+            }
+
+            // Ищем получателя
+            const usersRef = db.collection('users');
+            const snapshot = await usersRef.where('customId', '==', toId).get();
+            
+            if (snapshot.empty) {
+                showNotification('❌ Пользователь не найден');
+                return;
+            }
+
+            // Обновляем баланс звезд
+            currentUser.balances.stars -= gift.price;
+
+            // Добавляем подарок получателю
+            const giftData = {
+                id: gift.id,
+                name: gift.name,
+                emoji: gift.emoji,
+                from: currentUser.username,
+                fromId: currentUser.customId,
+                date: new Date().toISOString()
+            };
+
+            await db.collection('users').doc(currentUser.uid).update({
+                balances: currentUser.balances
+            });
+
+            await db.collection('users').doc(snapshot.docs[0].id).update({
+                gifts: firebase.firestore.FieldValue.arrayUnion(giftData)
+            });
+
+            showNotification(`✅ Подарок отправлен пользователю ${toId}`);
+            closeModal('giftModal');
+            updateUI();
+        }
+
+        // ========== МАРКЕТ ==========
+        const PHONE_NUMBERS = [
+            { number: '+7 (999) 123-45-67', price: 10000 },
+            { number: '+7 (999) 888-77-66', price: 15000 },
+            { number: '+888 1234', price: 800000 },
+            { number: '+888 5678', price: 800000 },
+            { number: '+888 99999999', price: 50000 }
+        ];
+
+        function loadMarket() {
+            showMarketTab('numbers');
+        }
+
+        function showMarketTab(tab) {
+            const content = document.getElementById('marketContent');
+            if (!content) return;
+
+            if (tab === 'numbers') {
+                content.innerHTML = '<h3 style="color:white;">📞 Номера</h3>';
+                PHONE_NUMBERS.forEach(phone => {
+                    content.innerHTML += `
+                        <div class="crypto-list" style="margin-bottom:10px;">
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <div>
+                                    <div style="color:white;">${phone.number}</div>
+                                    <div style="color:#ffd700;">${phone.price} TON</div>
+                                </div>
+                                <button class="action-btn" onclick="buyPhone('${phone.number}', ${phone.price})">Купить</button>
+                            </div>
+                        </div>
+                    `;
+                });
+            } else {
+                content.innerHTML = '<h3 style="color:white;">🔤 NFT юзернеймы</h3><p style="color:#b19cd9;">Скоро появятся</p>';
+            }
+        }
+
+        function searchMarket() {
+            // Простая фильтрация
+            loadMarket();
+        }
+
+        async function buyPhone(number, price) {
+            if (currentUser.balances.ton < price) {
+                showNotification('❌ Недостаточно TON');
+                return;
+            }
+
+            currentUser.balances.ton -= price;
+            
+            // Сохраняем номер в пользователе
+            await db.collection('users').doc(currentUser.uid).update({
+                balances: currentUser.balances,
+                phones: firebase.firestore.FieldValue.arrayUnion(number)
+            });
+
+            showNotification(`✅ Номер ${number} куплен!`);
+            updateUI();
+        }
+
+        // ========== ЧАТЫ ==========
+        function searchUsers() {
+            const query = document.getElementById('chatSearch').value;
+            // Здесь будет поиск пользователей
+        }
+
+        function createGroup() {
+            showNotification('📝 Создание групп будет в следующем обновлении');
+        }
+
+        // ========== ПРОФИЛЬ ==========
+        function loadProfile() {
+            if (!currentUser) return;
+
+            document.getElementById('profileUsername').innerHTML = `👤 ${currentUser.username}`;
+            document.getElementById('profileId').innerHTML = `ID: ${currentUser.customId}`;
+
+            const giftsDiv = document.getElementById('profileGifts');
+            giftsDiv.innerHTML = '';
+
+            const userGifts = currentUser.gifts || [];
+            if (userGifts.length === 0) {
+                giftsDiv.innerHTML = '<p style="color:#b19cd9;">Нет подарков</p>';
+                return;
+            }
+
+            userGifts.forEach(gift => {
+                giftsDiv.innerHTML += `
+                    <div class="crypto-item">
+                        <div class="crypto-icon">${gift.emoji}</div>
+                        <div class="crypto-details">
+                            <div class="crypto-name">${gift.name}</div>
+                            <div style="color:#b19cd9; font-size:12px;">от ${gift.from}</div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function showProfile(userId) {
+            showPage('profile');
+            loadProfile();
+        }
+
+        // ========== НАСТРОЙКИ ==========
+        function loadSettings() {
+            // Ничего особенного
+        }
+
+        async function changeUsername() {
+            const newUsername = document.getElementById('newUsername').value;
+            
+            if (newUsername.length < 5) {
+                showNotification('❌ Минимум 5 символов');
+                return;
+            }
+
+            if (/^[0-9]/.test(newUsername)) {
+                showNotification('❌ Не может начинаться с цифры');
+                return;
+            }
+
+            // Проверка уникальности
+            const snapshot = await db.collection('users').where('username', '==', newUsername).get();
+            if (!snapshot.empty) {
+                showNotification('❌ Юзернейм уже занят');
+                return;
+            }
+
+            currentUser.username = newUsername;
+            await db.collection('users').doc(currentUser.uid).update({
+                username: newUsername
+            });
+
+            updateUI();
+            showNotification('✅ Юзернейм изменен');
+        }
+
+        // ========== УВЕДОМЛЕНИЯ ==========
         function showNotification(message) {
             const notification = document.getElementById('notification');
             notification.textContent = message;
             notification.classList.add('show');
-            setTimeout(() => notification.classList.remove('show'), 3000);
-        }
-
-        function updateHeader() {
-            document.getElementById('headerUsername').textContent = currentUser.username;
-            document.getElementById('headerUserId').textContent = `ID: ${currentUser.id}`;
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
         }
     </script>
 </body>
